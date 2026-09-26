@@ -192,6 +192,15 @@ export default function App() {
                       >
                         X
                       </a>
+                      <span aria-hidden="true">·</span>
+                      <a
+                        href="https://huggingface.co/CloudGoat"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="text-[#111111] hover:underline underline-offset-4"
+                      >
+                        Hugging Face
+                      </a>
                     </div>
                   </div>
                 </div>
