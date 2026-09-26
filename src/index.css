@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #fdfdf9;
+    color: #111111;
+    font-family: "Fira Mono", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+  }
+}
+

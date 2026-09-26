@@ -1,0 +1,6 @@
+{
+  "name": "CloudGoat Portfolio",
+  "description": "Minimalist personal portfolio of CloudGoat featuring works, about, and machine specifications.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
