@@ -37,7 +37,7 @@ const WORKS: WorkItem[] = [
   {
     id: '04',
     title: 'Baphomet-1.0-4B',
-    description: '4Bモデル。',
+    description: 'Qwen3.5-4Bベースに8つのtask-vectorを線形マージした視覚言語モデル。GoatMerge製。',
     url: 'https://huggingface.co/CloudGoat/Baphomet-1.0-4B',
   },
   {
