@@ -18,15 +18,45 @@ interface WorkItem {
 const WORKS: WorkItem[] = [
   {
     id: '01',
-    title: 'Qwen3.5-0.8B-JP-Tuned',
-    description: '日本語に特化したqwen3.5-0.8B。',
-    url: 'https://huggingface.co/CloudGoat/Qwen3.5-0.8B-JP-Tuned-v2.0',
+    title: 'GoatMerge',
+    description: 'Streaming task-arithmetic merge engine。省メモリでモデルマージするエンジン。',
+    url: 'https://github.com/CroudGoat/GoatMerge',
   },
   {
     id: '02',
+    title: 'mergekit-cabs',
+    description: 'CABS (ICML 2025) & CABS+ を mergekit で使える拡張。',
+    url: 'https://github.com/CroudGoat/mergekit-cabs',
+  },
+  {
+    id: '03',
     title: 'RoMM',
     description: 'ベクトルの幾何学特徴から最適なモデルマージを行う方法',
     url: 'https://github.com/CroudGoat/RoMM',
+  },
+  {
+    id: '04',
+    title: 'AgentHorse-4B',
+    description: 'エージェント用途に寄せた4Bモデル。',
+    url: 'https://huggingface.co/CloudGoat/AgentHorse-4B',
+  },
+  {
+    id: '05',
+    title: 'Orythos-9B',
+    description: '9Bの汎用モデル。',
+    url: 'https://huggingface.co/CloudGoat/Orythos-9B',
+  },
+  {
+    id: '06',
+    title: 'Mephisto-1.0-4B',
+    description: '4Bの対話モデル。',
+    url: 'https://huggingface.co/CloudGoat/Mephisto-1.0-4B',
+  },
+  {
+    id: '07',
+    title: 'Qwen3.5-0.8B-JP-Tuned',
+    description: '日本語に特化したqwen3.5-0.8B。',
+    url: 'https://huggingface.co/CloudGoat/Qwen3.5-0.8B-JP-Tuned-v2.0',
   },
 ];
 
