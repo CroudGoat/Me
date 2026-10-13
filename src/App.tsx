@@ -150,8 +150,8 @@ export default function App() {
           )}
 
           {activeSection === 'works' && (
-            <section className="w-full max-w-[580px] text-left select-text">
-              <div className="flex items-baseline justify-between border-b border-[#111111]/15 pb-3 mb-6">
+            <section className="w-full max-w-[640px] text-left select-text">
+              <div className="flex items-baseline justify-between border-b border-[#111111]/15 pb-3 mb-5">
                 <h2 className="text-xl font-normal">works</h2>
                 <button
                   type="button"
@@ -162,23 +162,22 @@ export default function App() {
                 </button>
               </div>
 
-              <div className="divide-y divide-[#111111]/10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {WORKS.map((work) => (
-                  <div key={work.id} className="py-4 space-y-1.5">
-                    <div className="flex items-baseline justify-between gap-4">
-                      <a
-                        href={work.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="text-base text-[#111111] hover:underline underline-offset-4"
-                      >
-                        {work.title} ↗
-                      </a>
+                  <a
+                    key={work.id}
+                    href={work.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="block border border-[#111111]/10 p-3.5 hover:border-[#111111]/30 transition-colors duration-150"
+                  >
+                    <div className="text-sm text-[#111111] leading-snug">
+                      {work.title} ↗
                     </div>
-                    <p className="text-sm text-[#111111]/80 leading-relaxed">
+                    <p className="mt-1.5 text-xs text-[#111111]/70 leading-relaxed">
                       {work.description}
                     </p>
-                  </div>
+                  </a>
                 ))}
               </div>
             </section>
