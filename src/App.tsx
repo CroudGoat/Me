@@ -36,24 +36,18 @@ const WORKS: WorkItem[] = [
   },
   {
     id: '04',
-    title: 'AgentHorse-4B',
-    description: 'エージェント用途に寄せた4Bモデル。',
-    url: 'https://huggingface.co/CloudGoat/AgentHorse-4B',
+    title: 'Baphomet-1.0-4B',
+    description: '4Bモデル。',
+    url: 'https://huggingface.co/CloudGoat/Baphomet-1.0-4B',
   },
   {
     id: '05',
-    title: 'Orythos-9B',
-    description: '9Bの汎用モデル。',
-    url: 'https://huggingface.co/CloudGoat/Orythos-9B',
-  },
-  {
-    id: '06',
     title: 'Mephisto-1.0-4B',
     description: '4Bの対話モデル。',
     url: 'https://huggingface.co/CloudGoat/Mephisto-1.0-4B',
   },
   {
-    id: '07',
+    id: '06',
     title: 'Qwen3.5-0.8B-JP-Tuned',
     description: '日本語に特化したqwen3.5-0.8B。',
     url: 'https://huggingface.co/CloudGoat/Qwen3.5-0.8B-JP-Tuned-v2.0',
