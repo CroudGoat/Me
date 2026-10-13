@@ -43,7 +43,7 @@ const WORKS: WorkItem[] = [
   {
     id: '05',
     title: 'Mephisto-1.0-4B',
-    description: '4Bの対話モデル。',
+    description: 'Qwen3.5-4Bベースを多段階マージしたエージェント向け4B対話モデル。SLERP+DARE-TIES製。',
     url: 'https://huggingface.co/CloudGoat/Mephisto-1.0-4B',
   },
   {
