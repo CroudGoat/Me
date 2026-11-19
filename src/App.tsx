@@ -5,6 +5,7 @@
 
 import { useState } from 'react';
 import goatIllustration from './assets/images/1790412946906-01a0dced-13bf-7de9-8acb-2582d08cf4c0.webp';
+import { isAcceptableImage } from './imageInput.ts';
 
 type Section = 'works' | 'about' | 'Machine' | null;
 
@@ -58,6 +59,30 @@ const MACHINE_SPECS = [
   { label: 'GPU', value: 'RTX3060 12GB' },
 ];
 
+function Panel({ title, maxWidth, onClose, children }: {
+  title: string;
+  maxWidth: string;
+  onClose: () => void;
+  children: React.ReactNode;
+}) {
+  return (
+    <section className={`w-full ${maxWidth} text-left select-text`}>
+      <div className="flex items-baseline justify-between border-b border-[#111111]/15 pb-3 mb-5">
+        <h2 className="text-xl font-normal">{title}</h2>
+        <button
+          type="button"
+          onClick={onClose}
+          className="text-xs text-[#111111]/60 hover:text-[#111111] transition-colors duration-150 cursor-pointer whitespace-nowrap"
+        >
+          ← close
+        </button>
+      </div>
+
+      {children}
+    </section>
+  );
+}
+
 export default function App() {
   const [activeSection, setActiveSection] = useState<Section>(null);
   const [customGoatSrc, setCustomGoatSrc] = useState<string | null>(null);
@@ -70,7 +95,7 @@ export default function App() {
   const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
     e.preventDefault();
     const file = e.dataTransfer.files?.[0];
-    if (file && file.type.startsWith('image/')) {
+    if (isAcceptableImage(file)) {
       const reader = new FileReader();
       reader.onload = () => {
         if (typeof reader.result === 'string') {
@@ -126,12 +151,11 @@ export default function App() {
         {/* Right Column: Goat Illustration (default) or Section Content */}
         <div className="md:col-span-7 flex items-center justify-center min-h-[380px] md:min-h-[520px]">
           {activeSection === null && (
-            <div className="w-full max-w-[740px] flex items-center justify-center">
+            <div className="w-full max-w-[740px] flex flex-col items-center gap-3">
               {!imageError ? (
                 <img
                   src={customGoatSrc || goatIllustration}
                   alt="CloudGoat illustration — vintage woodcut of a goat wearing small round spectacles"
-                  referrerPolicy="no-referrer"
                   onError={() => setImageError(true)}
                   className="w-full h-auto max-h-[540px] object-contain"
                 />
@@ -140,22 +164,28 @@ export default function App() {
                   CloudGoat
                 </div>
               )}
+
+              {customGoatSrc && (
+                <button
+                  type="button"
+                  onClick={() => {
+                    setCustomGoatSrc(null);
+                    setImageError(false);
+                  }}
+                  className="text-xs text-[#111111]/60 hover:text-[#111111] transition-colors duration-150 cursor-pointer focus:outline-none focus-visible:underline"
+                >
+                  reset image
+                </button>
+              )}
             </div>
           )}
 
           {activeSection === 'works' && (
-            <section className="w-full max-w-[640px] text-left select-text">
-              <div className="flex items-baseline justify-between border-b border-[#111111]/15 pb-3 mb-5">
-                <h2 className="text-xl font-normal">works</h2>
-                <button
-                  type="button"
-                  onClick={() => setActiveSection(null)}
-                  className="text-xs text-[#111111]/60 hover:text-[#111111] transition-colors duration-150 cursor-pointer whitespace-nowrap"
-                >
-                  ← close
-                </button>
-              </div>
-
+            <Panel
+              title="works"
+              maxWidth="max-w-[640px]"
+              onClose={() => setActiveSection(null)}
+            >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {WORKS.map((work) => (
                   <a
@@ -174,22 +204,15 @@ export default function App() {
                   </a>
                 ))}
               </div>
-            </section>
+            </Panel>
           )}
 
           {activeSection === 'about' && (
-            <section className="w-full max-w-[580px] text-left select-text">
-              <div className="flex items-baseline justify-between border-b border-[#111111]/15 pb-3 mb-6">
-                <h2 className="text-xl font-normal">about</h2>
-                <button
-                  type="button"
-                  onClick={() => setActiveSection(null)}
-                  className="text-xs text-[#111111]/60 hover:text-[#111111] transition-colors duration-150 cursor-pointer whitespace-nowrap"
-                >
-                  ← close
-                </button>
-              </div>
-
+            <Panel
+              title="about"
+              maxWidth="max-w-[580px]"
+              onClose={() => setActiveSection(null)}
+            >
               <div className="space-y-5 text-sm leading-relaxed text-[#111111]/85">
                 <p>
                   学生。AI愛好家。RTX3060、Qwen3.8-27B-GSQ-RCOと共に生きる。モデルマージなどを嗜んでいます
@@ -228,22 +251,15 @@ export default function App() {
                   </div>
                 </div>
               </div>
-            </section>
+            </Panel>
           )}
 
           {activeSection === 'Machine' && (
-            <section className="w-full max-w-[580px] text-left select-text">
-              <div className="flex items-baseline justify-between border-b border-[#111111]/15 pb-3 mb-6">
-                <h2 className="text-xl font-normal">Machine</h2>
-                <button
-                  type="button"
-                  onClick={() => setActiveSection(null)}
-                  className="text-xs text-[#111111]/60 hover:text-[#111111] transition-colors duration-150 cursor-pointer whitespace-nowrap"
-                >
-                  ← close
-                </button>
-              </div>
-
+            <Panel
+              title="Machine"
+              maxWidth="max-w-[580px]"
+              onClose={() => setActiveSection(null)}
+            >
               <dl className="divide-y divide-[#111111]/10 text-sm">
                 {MACHINE_SPECS.map((item) => (
                   <div
@@ -255,11 +271,10 @@ export default function App() {
                   </div>
                 ))}
               </dl>
-            </section>
+            </Panel>
           )}
         </div>
       </div>
     </main>
   );
 }
-

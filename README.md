@@ -1,18 +1,21 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# CloudGoat
 
-# Run and deploy your AI Studio app
+Personal portfolio site with works, about, and machine sections, built with React 19 + Vite 8 + Tailwind CSS 4.
 
-This contains everything you need to run your app locally.
+## Development
 
-## Run Locally
+```bash
+npm install
+npm run dev      # http://localhost:3000
+npm run build
+npm run preview
+npm run lint     # type check
+npm test
+```
 
-**Prerequisites:**  Node.js
+## Structure
 
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+- `src/App.tsx` - page and panels
+- `src/imageInput.ts` - drag-and-drop image validation
+- `index.html` - HTML entry point
+- `vite.config.ts` - Vite configuration
