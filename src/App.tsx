@@ -154,7 +154,7 @@ export default function App() {
             <SectionHeading>about</SectionHeading>
             <div className="space-y-5 text-sm leading-relaxed text-[#111111]/85">
               <p>
-                学生。AI愛好家。RTX3060、Qwen3.8-27B-GSQ-RCOと共に生きる。モデルマージなどを嗜んでいます
+                学生。AI愛好家。モデルマージやモデル手術などを嗜んでいます。計算資源が欲しいです
               </p>
 
               <div className="pt-3 border-t border-[#111111]/10 space-y-2 text-xs text-[#111111]/70">
