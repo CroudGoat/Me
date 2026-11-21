@@ -91,19 +91,15 @@ export default function App() {
       className="min-h-screen w-full bg-[#fdfdf9] text-[#111111] px-6 py-12 md:px-16 lg:px-24 select-none"
     >
       <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 items-start gap-12 md:grid-cols-12 md:gap-8">
-        {/* Left Column: CloudGoat & illustration */}
-        <header className="flex flex-col items-center justify-center md:sticky md:top-12 md:col-span-5">
-          <h1 className="text-[38px] font-normal tracking-tight text-[#111111] sm:text-[44px] lg:text-[48px]">
-            CloudGoat
-          </h1>
-
-          <div className="mt-10 flex w-full max-w-[420px] flex-col items-center gap-3">
+        {/* Illustration column — md:right / first on phones */}
+        <aside className="flex flex-col items-center justify-center gap-3 md:sticky md:top-12 md:h-[calc(100svh-3rem)] md:col-span-6 md:order-2">
+          <div className="flex w-full max-w-[560px] flex-col items-center gap-3">
             {!imageError ? (
               <img
                 src={customGoatSrc || goatIllustration}
                 alt="CloudGoat illustration — vintage woodcut of a goat wearing small round spectacles"
                 onError={() => setImageError(true)}
-                className="w-full h-auto max-h-[480px] object-contain"
+                className="w-full h-auto max-h-[min(74svh,560px)] object-contain"
               />
             ) : (
               <div className="flex aspect-[3/2] w-full items-center justify-center border border-[#111111]/15 text-sm text-[#111111]/60">
@@ -124,10 +120,13 @@ export default function App() {
               </button>
             )}
           </div>
-        </header>
+        </aside>
 
-        {/* Right Column: all content, one flow */}
-        <div className="flex flex-col gap-14 select-text md:col-span-7">
+        {/* Text column — md:left */}
+        <div className="flex flex-col gap-12 md:col-span-6 md:order-1">
+          <h1 className="text-[38px] font-normal tracking-tight text-[#111111] sm:text-[44px] lg:text-[48px]">
+            CloudGoat
+          </h1>
           <section>
             <SectionHeading>works</SectionHeading>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
