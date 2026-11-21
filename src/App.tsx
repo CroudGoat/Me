@@ -3,9 +3,6 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { useState } from 'react';
-import goatIllustration from './assets/images/1790412946906-01a0dced-13bf-7de9-8acb-2582d08cf4c0.webp';
-import { isAcceptableImage } from './imageInput.ts';
 
 interface WorkItem {
   id: string;
@@ -66,70 +63,17 @@ function SectionHeading({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
-  const [customGoatSrc, setCustomGoatSrc] = useState<string | null>(null);
-  const [imageError, setImageError] = useState(false);
-
-  const handleDrop = (e: React.DragEvent<HTMLDivElement>) => {
-    e.preventDefault();
-    const file = e.dataTransfer.files?.[0];
-    if (isAcceptableImage(file)) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        if (typeof reader.result === 'string') {
-          setCustomGoatSrc(reader.result);
-          setImageError(false);
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
   return (
-    <main
-      onDragOver={(e) => e.preventDefault()}
-      onDrop={handleDrop}
-      className="min-h-screen w-full bg-[#fdfdf9] text-[#111111] px-6 py-12 md:px-16 lg:px-24 select-none"
-    >
-      <div className="mx-auto grid w-full max-w-[1360px] grid-cols-1 items-start gap-12 md:grid-cols-12 md:gap-8">
-        {/* Illustration column — md:right / first on phones */}
-        <aside className="flex flex-col items-center justify-center gap-3 md:sticky md:top-12 md:h-[calc(100svh-3rem)] md:col-span-6 md:order-2">
-          <div className="flex w-full max-w-[560px] flex-col items-center gap-3">
-            {!imageError ? (
-              <img
-                src={customGoatSrc || goatIllustration}
-                alt="CloudGoat illustration — vintage woodcut of a goat wearing small round spectacles"
-                onError={() => setImageError(true)}
-                className="w-full h-auto max-h-[min(74svh,560px)] object-contain"
-              />
-            ) : (
-              <div className="flex aspect-[3/2] w-full items-center justify-center border border-[#111111]/15 text-sm text-[#111111]/60">
-                CloudGoat
-              </div>
-            )}
-
-            {customGoatSrc && (
-              <button
-                type="button"
-                onClick={() => {
-                  setCustomGoatSrc(null);
-                  setImageError(false);
-                }}
-                className="cursor-pointer text-xs text-[#111111]/60 transition-colors duration-150 hover:text-[#111111] focus:outline-none focus-visible:underline"
-              >
-                reset image
-              </button>
-            )}
-          </div>
-        </aside>
-
-        {/* Text column — md:left */}
-        <div className="flex flex-col gap-12 md:col-span-6 md:order-1">
+    <main className="min-h-screen w-full bg-[#fdfdf9] text-[#111111] px-6 py-12 md:px-8 lg:px-12 select-none">
+      <div className="mx-auto w-full max-w-[760px] flex flex-col gap-12 items-center text-center">
+                {/* Text column — md:left */}
+        <div className="w-full flex flex-col gap-12 select-text">
           <h1 className="text-[38px] font-normal tracking-tight text-[#111111] sm:text-[44px] lg:text-[48px]">
             CloudGoat
           </h1>
           <section>
             <SectionHeading>works</SectionHeading>
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="grid w-full grid-cols-1 gap-3 sm:grid-cols-2">
               {WORKS.map((work) => (
                 <a
                   key={work.id}
